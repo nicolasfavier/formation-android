@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Exercices de la formation Parlez-Vous Android ?">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Do you speak Android - Project</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="css/main.css" rel="stylesheet" media="screen">
+</head>
+<body>
+    <div class="masthead">
+        <div class="container lead">
+            <h1>Do you speak Android?</h1>
+            <p>Android through practice.</p>
+            <p class="excilys"><span>by</span> <a href="http://www.excilys.com/">Excilys</a></p>
+        </div>
+    </div>
+    <div class="container subhead">
+            <h1>Project</h1>
+    </div>
+    <div class="container">
+        <div class="row">
+            <section>
+	      <h3>Project due on Wednesday 22th January, 23:59 (29th January for those absent during the two days of formation WITH A VALID REASON)</h3>
+                <h1>Introduction</h1>
+                <p>This project uses the application <strong>form</strong> already developed during the formation. The application will be working this way:</p>
+                <img src="img/projet.png" alt="Cinématique du projet">
+                <h1>Explanations</h1>
+                <ul>
+                    <li>On startup, the login page is displayed.</li>
+                    <li><span class="badge badge-success">1</span> The user enter his credentials and access the home page if they are corect. The home page contains two buttons: <strong>Messages list</strong>  and <strong>Send message</strong>.</li>
+                  	  <li><span class="badge badge-success">2</span> By clicking the button <strong>Messages list</strong>, the user is redirected on an activity displaying all the messages sent by all users to the server, and a button <strong>Refresh</strong> allowing to reload this list. </li>
+	                    <li><span class="badge badge-success">3</span> By clicking the button <strong>Send message</strong>, the user is redirected on an activity with a text field and a <strong>Send</strong> button.</li>
+                </ul>
+                <br/>
+                <p>Specifically, you will have to implement the following things:</p>
+                <ul>
+                    <li><strong>3 new Activities</strong> (Home page, messages list and send message), along with the 3 associated layouts.</li>
+                    <li><strong>2 new AsyncTasks</strong> respectively loading the messages list from the server and sending a message to it.</li>
+                    <li>Create buttons and associate them actions (launching other Activities or AsyncTasks…)</li>
+                    <li>etc…</li>
+                </ul>
+
+                <br>
+                <p class="well"><span class="label label-info">Remarque</span> The tricky part of this project is the implementation of the messages list. The components used were not dealt with during the formation, and it's the biggest part of the project. You will find further indications at the end of this document.</p>
+                <h1>Indications</h1>
+                <h3>Urls</h3>
+                <p>The webservice is hosted on Heroku at the adress <a href="http://parlezvous.herokuapp.com/">http://parlezvous.herokuapp.com</a>. You don't need to fill in the port as required during the formation. The root url is used in the browser to register a new user.</p>
+                <p>This is the urls list you will have to use:</p>
+                <dl>
+                    <dt><strong>/connect/{user}/{password}</strong></dt>
+                    <dd>Check the credentials user/password and returns the string <code>true</code> if the user is registered, <code>false</code> otherwise.</dd>
+                    <dt><strong>/message/{user}/{password}/{message}</strong></dt>
+                    <dd>Post a message with author <strong>user</strong>. The combination user/password must be valid for the message to be posted. No return value is sent by the server.</dd>
+                    <dt><strong>/messages/{user}/{password}</strong></dt>
+                    <dd>Receive the whole message list from the server. The messages are sent sorted chronologically. The list received uses the following syntax: <br/><code>author1:message1;author2:message2; … authorN:messageN</code> You will have to split the string to get all these informations. Use the methods provided by the String class. </dd>
+                </dl>
+                <p>For each request, if the combination user/password is erroneous, the request won't go through and you will receive the message: <code> access denied </code></p>
+                <h3>ListView</h3>
+                <ul>
+                    <li>ListView is the component for displaying a list of elements.</li>
+                    <li>A ListView requires an Adapter to work properly. The Adapter makes the connection between the raw data and the effectively displayed elements.</li>
+                    <li>You have the possibility either to use default implementations of Adapters or create your own. This last solution allows you to create more advanced views and have better control over it.</li>
+                </ul>
+                <br/>
+                <p>Further information are available on the developer guides made available by google: <a href="http://developer.android.com/index.html">http://developer.android.com/index.html</a>. Don't hesitate to navigate through the guides there if you want to understand all the basic mechanisms of Android.</p>
+                <p>Here are some useful resources:</p>
+                <ul>
+                    <li><a href="http://developer.android.com/resources/tutorials/views/hello-listview.html">http://developer.android.com/resources/tutorials/views/hello-listview.html</a></li>
+                    <li><a href="http://developer.android.com/training/improving-layouts/smooth-scrolling.html">http://developer.android.com/training/improving-layouts/smooth-scrolling.html</a></li>
+                </ul>
+		<h3>Sending the project</h3>
+		<p>You can send the project at the following adress: <em>lmazon@excilys.com</em>.</p>
+		<p>The file sent should be a zip file containing the root folder of your project (the folder which contains the directories res and src). Name your zip file this way (example for a two-people project):</p>
+		<p><code>ParlezVousAndroid_FirstName1-LASTNAME1_FirstName2-LASTNAME2.zip</code></p>
+		<p>Example:</p>
+		<p><code>ParlezVousAndroid_Luc-MAZON_Loic-ORTOLA.zip</code></p>
+            </section>
+            <script src="js/bootstrap.min.js"></script>
+            <script src="http://code.jquery.com/jquery-latest.js"></script>
+        </div>
+        <div id="footer" class="row">
+            
+        </div>
+    </div>
+</body>
+</html>
