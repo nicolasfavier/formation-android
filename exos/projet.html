@@ -46,7 +46,7 @@
                 <p class="well"><span class="label label-info">Remarque</span> La partie <strong>tricky</strong> du projet est l'implémentation de la liste des messages. Je ne vous ai pas parlé du composant permettant l'affichage d'une liste. C'est cette partie qui va représenter le gros du travail. Vous trouverez des indications à la fin de ce document.</p>
                 <h1>Indications</h1>
                 <h3>Urls</h3>
-                <p>Le web service est hébergé sur Heroku à l'adresse <a href="http://formation-android-esaip.herokuapp.com/">http://formation-android-esaip.herokuapp.com/</a>. Il n'est pas nécessaire d'indiquer le port comme pendant de la formation. L'url racine vous permet d'enregistrer un nouvel utilisateur.</p>
+                <p>Le web service est hébergé sur Heroku à l'adresse <a href="http://training.loicortola.com/parlez-vous-android/">http://training.loicortola.com/parlez-vous-android/</a>. L'url racine vous permet d'enregistrer un nouvel utilisateur.</p>
                 <p>Voici la liste des urls que vous allez devoir utiliser :</p>
                 <dl>
                     <dt><strong>/connect/{user}/{password}</strong></dt>
@@ -54,7 +54,7 @@
                     <dt><strong>/message/{user}/{password}/{message}</strong></dt>
                     <dd>Poster un message dont l'auteur est user. La combinaison user/password doit être valide pour que le message soit posté. Aucune valeur de retour n'est renvoyé par le serveur.</dd>
                     <dt><strong>/messages/{user}/{password}</strong></dt>
-                    <dd>Recevoir la liste de tous messages qui sont sur le serveur. Les messages sont envoyés dans l'ordre chronologique. La liste que vous recevrez sera une chaînes de caractères respectant le format suivant : <br/><code>auteur1:message1;auteur2:message2; … auteurN:messageN</code> Vous devrez splitter la chaîne de caractères pour en tirer les informations. Utilisez les méthodes fournit par la classe String. </dd>
+                    <dd>Recevoir la liste de tous messages qui sont sur le serveur. Les messages sont envoyés dans l'ordre chronologique. La liste que vous recevrez sera une chaînes de caractères respectant le format Json suivant : <br/><code>[{"uuid":"d94917c5-ae04-469b-a2cc-235ca3c4f85b","login":"un-pseudo","message":"un-message"},{</code> Vous devrez parsser se json. Le plus simple etant d'utiliser Gson <a href="https://sites.google.com/site/gson/gson-user-guide">https://sites.google.com/site/gson/gson-user-guide</a> </dd>
                 </dl>
                 <p>Pour chacune des requêtes, si la combinaison user/password est erronée, la requête n'aboutira pas et vous recevrez le message: <code> access denied </code></p>
                 <h3>ListView</h3>
